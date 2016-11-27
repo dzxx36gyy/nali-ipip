@@ -1,0 +1,67 @@
+#!/bin/sh
+prefix=/usr/local
+if test x"$1" = x"-h" -o x"$1" = x"--help" ; then
+echo "Usage: ./configure [options]"
+echo "  --help               print this message"
+echo "  --prefix=PREFIX      default:/usr/local"
+echo "  --bindir=BINDIR      default:$prefix/bin"
+echo "  --datadir=BINDIR     default:$prefix/share"
+echo ""
+exit 1
+fi
+
+# parse options
+
+for opt do
+    optarg="${opt#*=}"
+    case "$opt" in
+        --prefix=*)
+            prefix="$optarg"
+            ;;
+        --bindir=*)
+            bindir="$optarg"
+            ;;
+        --datadir=*)
+            datadir="$optarg"
+            ;;
+    esac
+done
+
+if test "z$bindir" = "z" 
+then
+    bindir=${prefix}/bin
+fi
+
+if test "z$datadir" = "z" 
+then
+    datadir=${prefix}/share
+fi
+
+
+# generate config files
+
+cat > config.mak << EOF
+prefix=$prefix
+bindir=$bindir
+datadir=$datadir
+EOF
+
+cat > config.h << EOF
+#define IPIPDB_PATH "$datadir/17monipdb.dat"
+EOF
+
+cat > bin/nali << EOF
+#!/bin/sh
+if test \$# -gt 0
+then
+    echo \$@|perl $datadir/nali.pl
+else
+    perl $datadir/nali.pl
+fi
+EOF
+
+echo '***** Configure Successfully *****'
+echo
+echo "Install:"
+echo 'make && make install'
+echo 

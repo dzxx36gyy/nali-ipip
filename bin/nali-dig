@@ -1,0 +1,2 @@
+#!/bin/sh
+dig $@ 2>&1|nali
