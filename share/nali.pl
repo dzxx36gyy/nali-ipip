@@ -13,5 +13,5 @@ sub ipip {
     $addr =~ s/\t/ /g;
     $addr =~ s/[ ]*$//g;
     $addr =~ s/  */ /g;
-    return "$ip\[$addr\]";
+    return "$ip \[$addr\]";
 }
