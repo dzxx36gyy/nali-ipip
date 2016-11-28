@@ -80,7 +80,7 @@ fi
 
 if test "x\$curl" != "x" &&  test -x \$curl 
 then
-    command="\$curl -k --compressed \$ipipdb_dat_url -o /tmp17monipdb.dat"
+    command="\$curl -k --compressed \$ipipdb_dat_url -o /tmp/17monipdb.dat"
 elif test "x\$wget" != "x" &&  test -x \$wget
 then
     command="\$wget --no-check-certificate \$ipipdb_dat_url -O /tmp/17monipdb.dat"
