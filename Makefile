@@ -10,6 +10,7 @@ install:bin share
 	install bin/nali-dig $(DESTDIR)$(bindir) 
 	install bin/nali-nslookup $(DESTDIR)$(bindir) 
 	install bin/nali-ping $(DESTDIR)$(bindir) 
+	install bin/nali-update $(DESTDIR)$(bindir) 
 	install share/17monipdb.dat $(DESTDIR)$(datadir) 
 	install share/nali.pl $(DESTDIR)$(datadir) 
 distclean: clean
