@@ -95,6 +95,18 @@ echo Failed to update
 exit 1
 EOF
 
+# Check and install dependence for Debian/Ubuntu/CentOS
+install_depend() 
+{
+    $1 install -y traceroute
+    $1 install -y tracepath
+    $1 install -y bind-utils # For CentOS/Red Hat
+    $1 install -y dnsutils # For Debian/Ubuntu
+    $1 install -y mtr
+}
+install_depend yum
+install_depend apt-get
+
 echo '***** Configure Successfully *****'
 echo
 echo "Install:"
