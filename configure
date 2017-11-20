@@ -95,17 +95,18 @@ echo Failed to update
 exit 1
 EOF
 
-# Check and install dependence for Debian/Ubuntu/CentOS
-install_depend() 
-{
-    $1 install -y traceroute
-    $1 install -y tracepath
-    $1 install -y bind-utils # For CentOS/Red Hat
-    $1 install -y dnsutils # For Debian/Ubuntu
-    $1 install -y mtr
-}
-install_depend yum
-install_depend apt-get
+cat <<EOF
+***** Please Read This *****
+To use all function of nali-ipip, you need to install the following packages
+
+traceroute (for nali-traceroute)
+bind-utils (for nali-dug and nali-nslookup)
+dnsutils (alternative to bind-utils in Debian)
+mtr (for nali-mtr)
+
+CentOS/RedHat: yum install traceroute bind-utils bind-utils -y
+Debian/Ubuntu: apt-get update; apt-get install traceroute dnsutils bind-utils -y
+EOF
 
 echo '***** Configure Successfully *****'
 echo
