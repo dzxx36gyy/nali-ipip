@@ -10,8 +10,6 @@ sub ipip {
 
     #optimize output format
     $addr =~ s/\n//g;
-    $addr =~ s/\t/ /g;
-    $addr =~ s/[ ]*$//g;
-    $addr =~ s/  */ /g;
+    $addr =~ s/ $//g;
     return "$ip \[$addr\]";
 }
