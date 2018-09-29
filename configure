@@ -27,12 +27,12 @@ for opt do
     esac
 done
 
-if test "z$bindir" = "z" 
+if test "z$bindir" = "z"
 then
     bindir=${prefix}/bin
 fi
 
-if test "z$datadir" = "z" 
+if test "z$datadir" = "z"
 then
     datadir=${prefix}/share
 fi
@@ -47,7 +47,7 @@ datadir=$datadir
 EOF
 
 cat > config.h << EOF
-#define IPIPDB_PATH "$datadir/17monipdb.dat"
+#define IPIPDB_PATH "$datadir/17monipdb.datx"
 EOF
 
 cat > bin/nali << EOF
@@ -62,8 +62,8 @@ EOF
 
 cat > bin/nali-update << EOF
 #!/bin/sh
-ipipdb_dat_url="https://cdn.ipip.net/17mon/17monipdb.dat";
-ipipdb_dat_local_path="$datadir/17monipdb.dat"
+ipipdb_dat_url="https://cdn.ipip.net/17mon/17monipdb.datx";
+ipipdb_dat_local_path="$datadir/17monipdb.datx"
 curl=\`which curl\`
 wget=\`which wget\`
 
@@ -73,23 +73,23 @@ then
     exit 1
 fi
 
-if test -f /tmp/17monipdb.dat
+if test -f /tmp/17monipdb.datx
 then
-    rm -f /tmp/17monipdb.dat || exit 1
+    rm -f /tmp/17monipdb.datx || exit 1
 fi
 
-if test "x\$curl" != "x" &&  test -x \$curl 
+if test "x\$curl" != "x" &&  test -x \$curl
 then
-    command="\$curl -k --compressed \$ipipdb_dat_url -o /tmp/17monipdb.dat"
+    command="\$curl -k --compressed \$ipipdb_dat_url -o /tmp/17monipdb.datx"
 elif test "x\$wget" != "x" &&  test -x \$wget
 then
-    command="\$wget --no-check-certificate \$ipipdb_dat_url -O /tmp/17monipdb.dat"
+    command="\$wget --no-check-certificate \$ipipdb_dat_url -O /tmp/17monipdb.datx"
 else
     echo Error: Please install curl or wget
     exit 1
-fi 
+fi
 echo Updating \$ipipdb_dat_local_path
-\$command && mv /tmp/17monipdb.dat \$ipipdb_dat_local_path && echo Successfully Updated && exit 0
+\$command && mv /tmp/17monipdb.datx \$ipipdb_dat_local_path && echo Successfully Updated && exit 0
 
 echo Failed to update
 exit 1
@@ -112,4 +112,4 @@ echo '***** Configure Successfully *****'
 echo
 echo "Install:"
 echo 'make && make install'
-echo 
+echo

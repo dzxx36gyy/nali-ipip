@@ -41,21 +41,9 @@ int main(int argc, char *argv[])
     char result[128];
     find(ip, result);
     destroy();
-    char *loc_arr[5] = {"*","*","*","*","*"};
-    const char *del = "\t";
-    split(loc_arr, result, del);
-    removeDuplicate(loc_arr, 5);
-    int i = 0;
-    char str[128] = "";
-    while(i< 5) {
-        if(strncmp(loc_arr[i],"*",1)){
-            strcat(str,loc_arr[i]);
-            strcat(str," ");
-        }
-        i++;
-    }
-    strcat(str,"\n");
-    puts(str);
+    strcat(result,"\n");
+    puts(result);
+
     return 0;
 }
 
