@@ -73,7 +73,8 @@ int find(const char *ip, char *result) {
         memcpy(result, ipip.data + ipip.offset + index_offset - 262144, index_length);
         result[index_length] = '\0';
         int current_tabs = 0;
-        for (int i = 0; i < index_length; i++) {
+        int i;
+        for (i = 0; i < index_length; i++) {
             if (result[i] == '\t') {
                 if (current_tabs++ == 4) {
                     result[i] = 0;
