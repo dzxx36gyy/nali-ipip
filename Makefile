@@ -3,6 +3,8 @@ all:nali.c lib17mon/ipip.c
 	gcc -o bin/ipipnali nali.c lib17mon/ipip.c
 	cp share/nali.sh bin/nali
 install:bin share
+	mkdir -p $(DESTDIR)$(bindir)
+	mkdir -p $(DESTDIR)$(datadir)
 	install bin/ipipnali $(DESTDIR)$(bindir)
 	install bin/nali $(DESTDIR)$(bindir)
 	install bin/nali-traceroute $(DESTDIR)$(bindir)

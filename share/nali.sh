@@ -1,7 +1,8 @@
 #!/bin/sh
+DIR=$(dirname $0)
 if test $# -gt 0
 then
-    echo $@|perl /usr/local/share/nali.pl
+  echo $@|perl ${DIR}/../share/nali.pl
 else
-    perl /usr/local/share/nali.pl
+    perl ${DIR}/../share/nali.pl
 fi
